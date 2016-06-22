@@ -14,7 +14,8 @@ public class TestClientRpc {
         User user = new User("lishiming","2208911");
         try {
             RpcProxy proxy = RpcProxy.getProxy("127.0.0.1", 5801);
-            proxy.invoke(user.getClass(),user);
+            String s = proxy.syncInvoke(String.class, user, "run");
+            System.out.println(s);
         } catch (IOException e) {
             e.printStackTrace();
         }
